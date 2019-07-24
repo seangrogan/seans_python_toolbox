@@ -19,12 +19,14 @@ The following are the argumemnts for the Map Plotter
 `map_plotter(title, file=None, display=True, mp=True, **kwargs)`
 
 Argument | Definintion 
+--- | --- 
 `title` | Title of the plot
 `file` | Path and filename if you want to write the plot to a file.  Default is `None` if no file writing is desire
 `display` | If `True` (default), plot is displayed.  Set to `False` if no display popup is reqired
 `mp` | If `True` (default), a new process is spawned and the plotting of the figure is sent to this new process.  Useful for large or complex drawings.  `False` will let the current process writie the plot.  
 
 Keyword Arguments | Definiton
+--- | --- 
 `counties` | Plots a list of shapes that are representative of county juristictions
 `stations` | Plots a scatterplot of fire stations
 `roads` | Plots roads
