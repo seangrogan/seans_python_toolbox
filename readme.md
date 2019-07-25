@@ -32,6 +32,7 @@ Keyword Arguments | Definiton
 `roads` | Plots roads
 `lsrs` | Plots local storm reports, currently only tornadoes 
 `sbws` | Plots storm based warnings
+`solution` or `tours` | a dict of list of points, i.e. the tour.  
 `points` | Simply plots a scatterplot of the points in green
 `waypoints` | Simply plots a scatterplot of the waypoints in blue
 `scale` | `True` (default) will plot a scalebar, `False` will leave it empty
