@@ -14,7 +14,8 @@ _z_orders = {
     "lsrs": 50,
     "sbws": 20,
     "points": 30,
-    "waypints": 40
+    "waypints": 40,
+    "tours": 200
 }
 
 
@@ -47,6 +48,9 @@ def _map_plotter(title, file=None, display=True, **kwargs):
         _plot_points(ax, fig, kwargs.get("points", None))
     if kwargs.get("waypoints", None) is not None:
         _plot_waypoints(ax, kwargs.get("waypoints", None))
+    if kwargs.get("solution", None) is not None or kwargs.get("tours", None) is not None:
+        tours = kwargs.get("solution", None) if kwargs.get("solution", None) is not None else kwargs.get("tours", None)
+        _plot_tours(ax, tours)
     if kwargs.get("scale", True):
         _plot_scale(ax, fig, **kwargs)
     if file is not None:
@@ -56,6 +60,11 @@ def _map_plotter(title, file=None, display=True, **kwargs):
         plt.show()
     plt.close(fig=fig)
 
+
+def _plot_tours(ax, tours):
+    for t in tours:
+        x, y = zip(*tours[t])
+        ax.plot(x, y, label=t, linestyle='-', linewidth=0.5, zorder=_z_orders.get("tours", None))
 
 def _plot_waypoints(ax, waypoints):
     x, y = zip(*waypoints)
