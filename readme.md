@@ -35,6 +35,7 @@ Keyword Arguments | Definiton
 `solution` or `tours` | a dict of list of points, i.e. the tour.  
 `points` | Simply plots a scatterplot of the points in green
 `waypoints` | Simply plots a scatterplot of the waypoints in blue
+`bbox` | Bounding box in a `tuple`/`list` of length of 4 in the format of `[left, bottom, right, top]` or dict with keys of the same names.  None keeps the bounds automatic.  A list with length less than 4 will apply none to the last keys.   
 `scale` | `True` (default) will plot a scalebar, `False` will leave it empty
 `location` | the location of the scalebar, default is `lower left`, but it can take some combination of `upper, lower, center, left, right`
 

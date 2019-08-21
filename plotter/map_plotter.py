@@ -53,6 +53,15 @@ def _map_plotter(title, file=None, display=True, **kwargs):
         _plot_tours(ax, tours)
     if kwargs.get("scale", True):
         _plot_scale(ax, fig, **kwargs)
+    if kwargs.get("bbox", None):
+        bbox = kwargs.get("bbox", None)
+        if isinstance(bbox, dict):
+            l, b, r, t = bbox.get("left", bbox.get("l")), bbox.get("bottom", bbox.get("b")), \
+                         bbox.get("right", bbox.get("r")), bbox.get("top", bbox.get("t"))
+        else:
+            l, b, r, t, *_ = bbox + [None, None, None, None]
+        ax.set_xlim(left=l, right=r)
+        ax.set_ylim(top=t, bottom=b)
     if file is not None:
         test_directory(file)
         fig.savefig(file.replace(" ", "_"), bbox_inches=kwargs.get("bbox_inches", "tight"))
@@ -65,6 +74,7 @@ def _plot_tours(ax, tours):
     for t in tours:
         x, y = zip(*tours[t])
         ax.plot(x, y, label=t, linestyle='-', linewidth=0.5, zorder=_z_orders.get("tours", None))
+
 
 def _plot_waypoints(ax, waypoints):
     x, y = zip(*waypoints)
@@ -81,7 +91,6 @@ def _plot_lsrs(ax, lsrs):
     for lsr in lsrs:
         x, y = lsr['lon'], lsr['lat']
         ax.scatter(x, y, c="red", marker="$T$", zorder=_z_orders.get("lsrs", None))
-
 
 
 def _plot_sbws(ax, sbws):
